@@ -92,3 +92,8 @@ http://HOST:8000/docs#/
 # Corre proyecto
 
 uvicorn main:app --reload
+
+# Technologies
+
+- Python
+- FastApi
