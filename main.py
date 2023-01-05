@@ -11,10 +11,14 @@ from bs4 import BeautifulSoup
 import requests
 import time
 import os
-
+import uvicorn
 from fastapi import FastAPI
 
+from tools.lenguage import Translate
+
+
 app = FastAPI()
+lenguage = Translate()
 
 
 @app.get("/products")
@@ -36,8 +40,18 @@ async def products():
     products = []
     for i in table1.find_all('tr'):
         element = i.text.split("\n")
-        product = {element[1], element[2], element[3]}
-        products.append(product)
+        if element[1] is not None and element[2] is not None and element[3] is not None:
+            product = {element[1], element[2], element[3]}
+            sp = element[1]
+            sp = sp.replace("(GLP)", "").replace("(GNV)", "")
+            test = lenguage.convert(sp.rstrip()
+                                    )
+            # test = lenguage.convert(element[1].replace("/[{()}]/g", ""))
+            print(test)
+            products.append(product)
+
+    return {"response": products, "code": 200, "url origen": "https://www.revistamercado.do/economia/precios-de-los-combustibles-rd", "dateRequest": datetime.now(), "lenguaje": "en"}
 
 
-    return {"response": products, "code": 200, "url origen": "https://www.revistamercado.do/economia/precios-de-los-combustibles-rd", "dateRequest": datetime.now()}
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
