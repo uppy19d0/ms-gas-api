@@ -89,11 +89,21 @@ http://HOST:8000/docs#/
 }
 ```
 
-# Corre proyecto
+# Run Project
 
-uvicorn main:app --reload
+Options:
+
+1-uvicorn main:app --reload
+
+    To debug
+
+    Python debug Console
+    * run python main.py
 
 # Technologies
 
-- Python
-- FastApi
+- Python 3.10.2:
+  https://www.python.org/
+
+- FastApi:
+  https://fastapi.tiangolo.com/
