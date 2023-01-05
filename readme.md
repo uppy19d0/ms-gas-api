@@ -1,4 +1,4 @@
-- AUTH :Luis Aneuris Tavarez De Jesus
+- AUTHOR :Luis Aneuris Tavarez De Jesus
 - Github: https://github.com
 - Linkedlin: https://www.linkedin.com/in/luis-aneuris-tavarez-de-jesus-a2400b174/
 - Date 2023 04/01/2023
